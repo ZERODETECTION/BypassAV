@@ -124,7 +124,7 @@ int main() {
 		return 1; // Decryption failed
 	}
 
-	printf("shellcode should ne decrypted now - press any key...:");
+	printf("shellcode should be decrypted now - press any key...:");
 	// Pause for debugging purposes (remove in production)
 	getchar();
 
