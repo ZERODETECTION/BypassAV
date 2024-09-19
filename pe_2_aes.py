@@ -29,7 +29,8 @@ def encrypt_hex_content(file_path, key, output_file):
         print(f"An error occurred: {e}")
 
 # Example usage
-pe_file_path = "input.exe"  # Replace with the path to your PE file
+pe_file_path = "input.bin"  # Replace with the path to your PE file
 output_file = "out.aes"            # Output file to save the encrypted data
 key = get_random_bytes(16)         # AES requires a key of 16, 24, or 32 bytes
+print("AES-Key: " + str(key))
 encrypt_hex_content(pe_file_path, key, output_file)
