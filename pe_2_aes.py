@@ -32,5 +32,11 @@ def encrypt_hex_content(file_path, key, output_file):
 pe_file_path = "input.bin"  # Replace with the path to your PE file
 output_file = "out.aes"            # Output file to save the encrypted data
 key = get_random_bytes(16)         # AES requires a key of 16, 24, or 32 bytes
-print("AES-Key: " + str(key))
+
+# Formatiere die Bytes im gewünschten C-Array-Stil
+formatted_output = ", ".join(f"0x{byte:02x}" for byte in key)
+
+# Gib die Ausgabe in der gewünschten Form aus
+print(f"unsigned char payload[] = {{ {formatted_output} }};")
+
 encrypt_hex_content(pe_file_path, key, output_file)
