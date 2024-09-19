@@ -37,6 +37,6 @@ key = get_random_bytes(16)         # AES requires a key of 16, 24, or 32 bytes
 formatted_output = ", ".join(f"0x{byte:02x}" for byte in key)
 
 # Gib die Ausgabe in der gewünschten Form aus
-print(f"unsigned char payload[] = {{ {formatted_output} }};")
+print(f"char key[] = {{ {formatted_output} }};")
 
 encrypt_hex_content(pe_file_path, key, output_file)
